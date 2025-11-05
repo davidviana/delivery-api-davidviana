@@ -11,6 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HealthController {
 
+    @GetMapping
+    public Map<String, String> home() {
+        return Map.of(
+            "message", "Delivery Tech API is running!",
+            "endpoints", "/health, /info"
+        );
+    }
+
+
     @GetMapping("/health")
     public Map<String, String> health() {
         return Map.of(
