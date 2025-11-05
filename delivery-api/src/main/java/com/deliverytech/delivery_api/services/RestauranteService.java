@@ -26,9 +26,7 @@ public class RestauranteService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    /**
-     * Cadastrar novo restaurante
-     */
+
     public Restaurante cadastrar(Restaurante restaurante) {
         // Validar nome único
         if (restauranteRepository.findByNome(restaurante.getNome()).isPresent()) {
@@ -41,9 +39,6 @@ public class RestauranteService {
         return restauranteRepository.save(restaurante);
     }
 
-    /**
-     * Buscar por ID
-     */
     @Transactional(readOnly = true)
     public Optional<Restaurante> buscarPorId(Long id) {
         return restauranteRepository.findById(id);
@@ -65,9 +60,7 @@ public class RestauranteService {
                 restaurante.getAvaliacao(),
                 restaurante.getAtivo()));
     }
-    /**
-     * Listar restaurantes ativos
-     */
+
     @Transactional(readOnly = true)
     public List<RestauranteDTO> listarAtivos() {
         List<Restaurante> byAtivoTrue = restauranteRepository.findByAtivoTrue();
@@ -87,9 +80,7 @@ public class RestauranteService {
             .toList();
     }
 
-    /**
-     * Buscar por categoria
-     */
+
     @Transactional(readOnly = true)
     public List<RestauranteDTO> buscarPorCategoria(String categoria) {
         List<Restaurante> byCategoria = restauranteRepository.findByCategoria(categoria);
@@ -110,9 +101,6 @@ public class RestauranteService {
             .toList();
     }
 
-    /**
-     * Atualizar restaurante
-     */
     public Restaurante atualizar(Long id, Restaurante restauranteAtualizado) {
         Restaurante restaurante = buscarPorId(id)
             .orElseThrow(() -> new IllegalArgumentException("Restaurante não encontrado: " + id));
@@ -132,9 +120,6 @@ public class RestauranteService {
         return restauranteRepository.save(restaurante);
     }
 
-    /**
-     * Inativar restaurante
-     */
     public void inativar(Long id) {
         Restaurante restaurante = buscarPorId(id)
             .orElseThrow(() -> new IllegalArgumentException("Restaurante não encontrado: " + id));
