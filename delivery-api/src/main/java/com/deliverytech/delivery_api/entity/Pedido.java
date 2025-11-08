@@ -3,7 +3,6 @@ package com.deliverytech.delivery_api.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,4 +47,21 @@ public class Pedido {
     private Restaurante restaurante;
 
     private String itens;
+
+    public Pedido (
+        String numeroPedido, 
+        LocalDateTime dataPedido,
+        String status, 
+        BigDecimal valorTotal, 
+        String observacoes, 
+        Long clienteId, 
+        Restaurante restaurante) {
+        this.numeroPedido = numeroPedido;
+        this.dataPedido = dataPedido;
+        this.status = status;
+        this.valorTotal = valorTotal;
+        this.observacoes = observacoes;
+        this.clienteId = clienteId;
+        this.restaurante = restaurante;
+    }
 }

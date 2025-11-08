@@ -44,6 +44,21 @@ public class RestauranteService {
         return restauranteRepository.findById(id);
     }
 
+    // buscar por ativo
+    public List<Restaurante> buscarPorAtivo() {
+        return restauranteRepository.findByAtivoTrue();
+    }
+
+    // buscar por taxa entrega
+    public List<Restaurante> buscarPorTaxaEntrega(BigDecimal taxa) {
+        return restauranteRepository.findByTaxaEntregaLessThanEqual(taxa);
+    }
+    
+    // buscar o Top 5 Restaurantes
+    public List<Restaurante> buscarTopRestaurantesPorNome() {
+        return restauranteRepository.findTop5ByOrderByNomeAsc();
+    }
+
     @Transactional(readOnly = true)
     public Optional<RestauranteDTO> findById(Long id) {
         Optional<Restaurante> byId = restauranteRepository.findById(id);

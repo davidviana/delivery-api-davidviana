@@ -1,6 +1,7 @@
 package com.deliverytech.delivery_api.services;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 import com.deliverytech.delivery_api.entity.PedidoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,12 +63,41 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }
 
-    /**
-     * Listar pedidos por cliente
-     */
+    // buscar por cliente
     @Transactional(readOnly = true)
     public List<Pedido> listarPorCliente(Long clienteId) {
         return pedidoRepository.findByClienteIdOrderByDataPedidoDesc(clienteId);
+    }
+
+    // buscar pedidos de um cliente
+    public List<Pedido> buscarPedidoPorCliente(Long clienteId) {
+        return pedidoRepository.findByClienteId(clienteId);
+    }
+
+    // buscar pedido por restaurante
+    public List<Pedido> buscarPedidoPorRestaurante(Long restauranteId) {
+        return pedidoRepository.findByRestauranteIdOrderByDataPedidoDesc(restauranteId);
+    }
+    
+    // buscar por status
+    public List<Pedido> buscarPorStatus(StatusPedido status ) {
+        return pedidoRepository.findByStatus(status);
+    }
+
+    // buscar Top 10 pedidos
+    public List<Pedido> buscarTopPedidos() {
+        return pedidoRepository.findTop10ByOrderByDataPedidoDesc();
+    }
+
+    // buscar pedido num range de data
+
+    public List<Pedido> buscarEntreDatas(LocalDateTime inicio, LocalDateTime fim) {
+        return pedidoRepository.findByDataPedidoBetween(inicio, fim);
+    }
+
+    // buscar por numero do pedido
+    public Pedido buscarPorNumeroPedido(String numeroPedido) {
+        return pedidoRepository.findByNumeroPedido(numeroPedido);
     }
 
     /**

@@ -100,6 +100,21 @@ public class ProdutoService {
         return produtoRepository.findByRestauranteId(restauranteId);
     }
 
+    // buscar produtos por categoria
+    public List<Produto> buscarPorCategoria(String categoria) {
+        return produtoRepository.findByCategoria(categoria);
+    }
+
+    // buscar produto por disponibilidade
+    public List<Produto> buscarPorDisponibilidade() {
+        return produtoRepository.findByDisponivelTrue();
+    }
+
+    // buscar produto por disponibilidade
+    public List<Produto> buscarPorPreco(BigDecimal preco) {
+        return produtoRepository.findByPrecoLessThanEqual(preco);
+    }
+
     public Produto inativar(Long id) {
         Produto produto = produtoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado: " + id));

@@ -27,15 +27,26 @@ public class Produto {
     private Long id;
 
     private String nome;
-
     private String descricao;
-
     private BigDecimal preco;
-
     private String categoria;
-
     private Boolean disponivel;
-
     private Long restauranteId;
+
+    public Produto(
+        String nome,
+        String descricao,
+        BigDecimal preco,
+        String categoria,
+        Boolean disponivel,
+        Long restaurantId
+    ) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
+        this.disponivel = disponivel;
+        this.restauranteId = restauranteId;
+    }
 
 }

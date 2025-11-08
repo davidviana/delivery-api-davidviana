@@ -35,21 +35,32 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    /**
-     * Buscar cliente por ID
-     */
+    // buscar por id
     @Transactional(readOnly = true)
     public Optional<Cliente> buscarPorId(Long id) {
         return clienteRepository.findById(id);
     }
 
-    /**
-     * Buscar cliente por email
-     */
+    // buscar por email
     @Transactional(readOnly = true)
     public Optional<Cliente> buscarPorEmail(String email) {
         return clienteRepository.findByEmail(email);
     }
+
+    // buscar por atividade
+    public List<Cliente> buscarPorAtivo() {
+        return clienteRepository.findByAtivoTrue();
+    }
+
+        /**
+     * Buscar clientes por nome
+     */
+    @Transactional(readOnly = true)
+    public List<Cliente> buscarPorNome(String nome) {
+        return clienteRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
+
 
     /**
      * Listar todos os clientes ativos
@@ -90,14 +101,6 @@ public class ClienteService {
 
         cliente.inativar();
         clienteRepository.save(cliente);
-    }
-
-    /**
-     * Buscar clientes por nome
-     */
-    @Transactional(readOnly = true)
-    public List<Cliente> buscarPorNome(String nome) {
-        return clienteRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     /**
