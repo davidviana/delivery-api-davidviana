@@ -25,11 +25,8 @@ public class Cliente {
     private Long id;
 
     private String nome;
-
     private String email;
-
     private String telefone;
-
     private String endereco;
 
     @Column(name = "data_cadastro")
@@ -42,10 +39,18 @@ public class Cliente {
         this.ativo = false;
     }
 
-    public Cliente(String nome, String email, String telefone, String endereco) {
+    public Cliente(
+        String nome, 
+        String email, 
+        String telefone, 
+        String endereco,
+        LocalDateTime dataCadastro,
+        Boolean ativo) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.dataCadastro = dataCadastro;
+        this.ativo = ativo;
     }
 }

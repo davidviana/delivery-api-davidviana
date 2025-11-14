@@ -1,10 +1,8 @@
 package com.deliverytech.delivery_api.entity;
+import com.deliverytech.delivery_api.entity.Restaurante;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

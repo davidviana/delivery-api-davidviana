@@ -42,7 +42,8 @@ public class Restaurante {
         String endereco,
         String telefone,
         BigDecimal taxaEntrega,
-        BigDecimal avaliacao
+        BigDecimal avaliacao,
+        Boolean ativo
     ) {
         this.nome =nome;
         this.categoria =categoria;
@@ -50,5 +51,6 @@ public class Restaurante {
         this.telefone =telefone;
         this.taxaEntrega =taxaEntrega;
         this.avaliacao = avaliacao;
+        this.ativo = ativo;
     }
 }

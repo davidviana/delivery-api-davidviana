@@ -55,7 +55,8 @@ public class Pedido {
         BigDecimal valorTotal, 
         String observacoes, 
         Long clienteId, 
-        Restaurante restaurante) {
+        Restaurante restaurante,
+        String itens) {
         this.numeroPedido = numeroPedido;
         this.dataPedido = dataPedido;
         this.status = status;
@@ -63,5 +64,6 @@ public class Pedido {
         this.observacoes = observacoes;
         this.clienteId = clienteId;
         this.restaurante = restaurante;
+        this.itens = itens;
     }
 }
